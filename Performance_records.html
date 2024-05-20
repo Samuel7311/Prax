@@ -12,16 +12,16 @@
 
         <label for="date">Date: </label>
         <input type="date" name="date" id="date">
-        <input type="time" name="time" id="time">
+        <input type="text" name="time" id="time">
 
         <input type="submit" value="Get Date & Time"><br><br>
 
-        <div>
-            <img src="1.png" alt="Performance icon 1" width="50" height="50">
-            <img src="2.png" alt="Performance icon 2" width="50" height="50">
-            <img src="3.png" alt="Performance icon 3" width="50" height="50">
-            <img src="4.png" alt="Performance icon 4" width="50" height="50">
-            <img src="5.png" alt="Performance icon 5" width="50" height="50">
+        <div id="performanceIcons">
+            <img src="1.png" alt="Performance icon 1" width="50" height="50" onclick="selectIcon(1)">
+            <img src="2.png" alt="Performance icon 2" width="50" height="50" onclick="selectIcon(2)">
+            <img src="3.png" alt="Performance icon 3" width="50" height="50" onclick="selectIcon(3)">
+            <img src="4.png" alt="Performance icon 4" width="50" height="50" onclick="selectIcon(4)">
+            <img src="5.png" alt="Performance icon 5" width="50" height="50" onclick="selectIcon(5)">
         </div>
         <br>
 
@@ -36,29 +36,43 @@
         var currentdate = new Date();
     
         document.getElementById("date").valueAsDate = currentdate;
-    
+
         var datetime = "Last Sync: " + currentdate.getDate() + "/" +
-                       (currentdate.getMonth() + 1) + "/" +
-                       currentdate.getFullYear() + "@" +
-                       currentdate.getHours() + ":" +
-                       currentdate.getMinutes() + ":";
-    
+                    (currentdate.getMonth() + 1) + "/" +
+                    currentdate.getFullYear() + "@" +
+                    currentdate.getHours() + ":" +
+                    currentdate.getMinutes() + ":";
+
         var seconds = currentdate.getSeconds();
         var secondsStr = (seconds < 10 ? "0" : "") + seconds;
-    
+
         datetime += secondsStr;
-    
+
         var curr_date = currentdate.getFullYear() + "-" +
                         (currentdate.getMonth() + 1) + "-" +
                         currentdate.getDate();
-    
+
         var curr_time = currentdate.getHours() + ":" +
                         currentdate.getMinutes() + ":" +
                         secondsStr;
-    
+
         document.getElementById('time').value = curr_time;
-    
+
         document.write(curr_time);
+        var selectedIcon = null;
+
+        function selectIcon(iconNumber) {
+            // Reset the previously selected icon
+            if (selectedIcon !== null) {
+                var prevIcon = document.getElementById("performanceIcons").children[selectedIcon - 1];
+                prevIcon.src = selectedIcon + ".png";
+            }
+
+            // Update the selected icon
+            var currentIcon = document.getElementById("performanceIcons").children[iconNumber - 1];
+            currentIcon.src = iconNumber + "_selected.png";
+            selectedIcon = iconNumber;
+        }
     </script>
     
 </body>
