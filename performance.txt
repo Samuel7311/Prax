@@ -1,0 +1,26 @@
+[performance]
+datum = 2024-05-21
+cas = 12:20.20
+a = 1
+b = 2
+
+
+[performance]
+datum = 2024-05-21
+cas = 12:40.20
+a = 1
+b = 2
+
+
+[performance]
+datum = 2024-05-21
+cas = 15:20.20
+a = 1
+b = 2
+
+
+[performance]
+current_date = 2024-05-21
+current_time = 12:10:00
+duration = 65
+selected_icon = 5
