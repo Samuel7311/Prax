@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Test page</title>
+</head>
+<body>
+
+    <h1>Test page</h1>
+    <div id="my_date">going to have date here</div>
+    <div id="my_time">going to have time here</div>
+
+    <button onclick="load_data_from_server()">Load data</button>
+
+    <script>
+        console.log("Script start");
+
+        function load_data_from_server() {
+            console.log("Going to fetch data from server");
+            fetch("http://localhost/api/performance")
+            .then(response => response.json())
+            .then(payload_from_server => {
+                console.log("received json from server: ", payload_from_server);
+                document.getElementById("my_date").innerText = payload_from_server["current_date"];
+                document.getElementById("my_time").innerText = payload_from_server["current_time"];
+            });
+        }
+
+        console.log("Script end");
+    </script>
+
+</body>
+</html>

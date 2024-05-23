@@ -1,19 +1,16 @@
-from flask import Flask, request
+from flask import Flask, jsonify
 
 
 app = Flask(__name__)
 
 
-@app.route('/performance', methods=['POST'])
+@app.route('/performance')
+def get_performance():
+    payload = {
+        "current_date": "2024-05-23",
+        "current_time": "7:57:22.10"
+    }
+    return jsonify(payload)   
 
-def set_performance():
-    print("Obdrzal som POST request na /performance...")
-    payload = request.json
-    
-    return "Ok", 200
 
-@app.route('/performance', methods=['GET'])
-def show_performance():
-    return "okok"
-
-app.run(debug=True, host="0.0.0.0", port="3000")
+app.run(debug=True)
